@@ -1,0 +1,35 @@
+.start {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(252, 129, 129);
+
+}
+.start img{
+    width: 306px;
+    height: 306px;
+    object-fit: contain;
+}
+
+.start button {
+    width: 120px;
+    height: 35px;
+    padding: 5px;
+    font-family: 'Segoe UI', sans-serif;
+    border-radius: 10px;
+    background-color: crimson;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    border: 1px solid crimson;
+    transition: background-color 0.5s ease;
+    margin-top: 40px;
+}
+
+.start button:hover {
+    background-color: #fff;
+    color: crimson;
+}
