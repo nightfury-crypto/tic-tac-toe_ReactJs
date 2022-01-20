@@ -30,6 +30,9 @@ const Game = ({setIsStart}) => {
         if (winner) {
             setWon(winner)
         }
+        if(winner === null) {
+            checkDraw()
+        }
     }
 
     // restart game
@@ -73,6 +76,24 @@ const Game = ({setIsStart}) => {
         }
         return null
     }
+    
+    // checkDraw
+    const checkDraw = () => {
+        let btns = document.querySelectorAll('.box')
+
+        let d = 0;
+        for (let i = 0; i < btns.length; i++) {
+            if (btns[i].innerText === 'X' || btns[i].innerText === 'O') {
+                d = d + 1
+            }
+        }
+        if (d === 9) {
+            wonSound.play()
+            setWon('Draw')
+            return "Draw"
+        }
+
+    }
 
 
 
@@ -101,12 +122,14 @@ const Game = ({setIsStart}) => {
 
             {/* playAgain or quit Screen */}
             {won ? <div className="playAgain" >
-                <h3 style={{ position: 'absolute', top: '50px', fontSize: '50px', fontFamily: 'sans-serif' }}>{won} won.</h3>
+                {won === 'Draw' ? <h3 style={{ position: 'absolute', top: '50px', fontSize: '50px', fontFamily: 'sans-serif' }}>{won}</h3>
+                    :
+                    <h3 style={{ position: 'absolute', top: '50px', fontSize: '50px', fontFamily: 'sans-serif' }}>{won} won.</h3>}
                 <span className='playAgainGame' style={{ backgroundColor: 'seagreen' }} onClick={restartGame}>
-                    <i className="fas fa-redo-alt" ></i>
+                    <ReplayIcon />
                 </span>
                 <span className='quitGame' style={{ backgroundColor: 'crimson' }} onClick={quit}>
-                    <i className="fas fa-times"></i>
+                    <CloseIcon />
                 </span>
             </div>
                 :
